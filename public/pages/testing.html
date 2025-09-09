@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <form role="form text-left">
+                                    <div class="mb-4">
+                                        @error('name')
+                                            <input type="text"
+                                                class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
+                                                placeholder="Name" aria-label="Name" aria-describedby="email-addon" />
+                                            <div class="text-red-700">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-4">
+                                        @error('email')
+                                            <input type="email"
+                                                class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
+                                                placeholder="Email" aria-label="Email" aria-describedby="email-addon" />
+                                            <div class="text-red-700">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-4">
+                                        @error('password')
+                                            <input type="password"
+                                                class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
+                                                placeholder="Password" aria-label="Password"
+                                                aria-describedby="password-addon" />
+                                            <div class="text-red-700">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="min-h-6 pl-6.92 mb-0.5 block">
+                                        <input id="terms"
+                                            class="w-4.92 h-4.92 ease-soft -ml-6.92 rounded-1.4 checked:bg-gradient-to-tl checked:from-gray-900 checked:to-slate-800 after:text-xxs after:font-awesome after:duration-250 after:ease-soft-in-out duration-250 relative float-left mt-1 cursor-pointer appearance-none border border-solid border-slate-200 bg-white bg-contain bg-center bg-no-repeat align-top transition-all after:absolute after:flex after:h-full after:w-full after:items-center after:justify-center after:text-white after:opacity-0 after:transition-all after:content-['\f00c'] checked:border-0 checked:border-transparent checked:bg-transparent checked:after:opacity-100"
+                                            type="checkbox" value="" checked />
+                                        <label
+                                            class="mb-2 ml-1 font-normal cursor-pointer select-none text-sm text-slate-700"
+                                            for="terms"> I agree the <a href="javascript:;"
+                                                class="font-bold text-slate-700">Terms and Conditions</a> </label>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="button"
+                                            class="inline-block w-full px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">register
+                                        </button>
+                                    </div>
+                                    <p class="mt-4 mb-0 leading-normal text-sm">Already have an account? <a
+                                            href="{{ route('loginPage') }}" class="font-bold text-slate-700">Log in</a>
+                                    </p>
+                                </form>
+
+
+                                 <form role="form">
+                                        <label class="mb-2 ml-1 font-bold text-xs text-slate-700">Email</label>
+                                        <div class="mb-4">
+                                            @error('email')
+                                                <input type="email"
+                                                    class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow"
+                                                    placeholder="Email" aria-label="Email" aria-describedby="email-addon" />
+                                                <div class="text-red-700">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <label class="mb-2 ml-1 font-bold text-xs text-slate-700">Password</label>
+                                        <div class="mb-4">
+                                            @error('password')
+                                                <input type="password"
+                                                    class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow"
+                                                    placeholder="Password" aria-label="Password"
+                                                    aria-describedby="password-addon" />
+                                                <div class="text-red-700">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="min-h-6 mb-0.5 block pl-12">
+                                            <input id="rememberMe"
+                                                class="mt-0.54 rounded-10 duration-250 ease-soft-in-out after:rounded-circle after:shadow-soft-2xl after:duration-250 checked:after:translate-x-5.25 h-5 relative float-left -ml-12 w-10 cursor-pointer appearance-none border border-solid border-gray-200 bg-slate-800/10 bg-none bg-contain bg-left bg-no-repeat align-top transition-all after:absolute after:top-px after:h-4 after:w-4 after:translate-x-px after:bg-white after:content-[''] checked:border-slate-800/95 checked:bg-slate-800/95 checked:bg-none checked:bg-right"
+                                                type="checkbox" checked="" />
+                                            <label
+                                                class="mb-2 ml-1 font-normal cursor-pointer select-none text-sm text-slate-700"
+                                                for="rememberMe">Remember me</label>
+                                        </div>
+                                        <div class="text-center">
+                                            <button type="button"
+                                                class="inline-block w-full px-6 py-3 mt-6 mb-0 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro text-xs ease-soft-in tracking-tight-soft bg-gradient-to-tl from-blue-600 to-cyan-400 hover:scale-102 hover:shadow-soft-xs active:opacity-85">Log
+                                                in</button>
+                                        </div>
+                                    </form>
+</body>
+</html>
