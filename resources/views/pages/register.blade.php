@@ -160,7 +160,7 @@
                                 </div>
                             </div>
                             <div class="flex-auto p-6">
-                                <form role="form text-left" method="POST" action="{{ route('registerUser') }}">
+                                <form role="form text-left" method="POST" action="{{ route('register') }}">
                                     @csrf
                                     
                                     <div class="mb-4">

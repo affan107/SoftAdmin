@@ -2,20 +2,29 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\DashboardController;
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
 
+Route::get('/', [AuthenticationController::class, 'login'])->name('loginPage')->middleware('guest');
 
-Route::get('/', [AuthenticationController::class, 'login'])->name('loginPage');
+Route::get('/register', [AuthenticationController::class, 'registerPage'])->name('registerPage')->middleware('guest');
 
-Route::get('/register', [AuthenticationController::class, 'register'])->name('registerPage');
+Route::post('/authenticate', [AuthenticationController::class, 'authenticate'])->name('authenticateUser');
 
-Route::post('/authenticateUser', [AuthenticationController::class, 'authenticate'])->name('authenticateUser');
+Route::post('/register-user', [AuthenticationController::class, 'register'])->name('register');
 
-Route::post('/registerUser', [AuthenticationController::class, 'registerUser'])->name('registerUser');
+Route::post('/logout', [AuthenticationController::class, 'logout'])->name('logout');
 
-Route::get('/dashboard', function () {
-    return view('pages.dashboard');
-});
+Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard')->middleware('auth');
+
+
+Route::get('/companies', function () {
+    return view('pages.companies');
+})->middleware('auth');
+
+// Route::get('/reset-password', function () {
+//     return view('pages.forgotPassword');
+// });

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class AuthAdmimin
+class AuthMiddleware
 {
     /**
      * Handle an incoming request.
@@ -20,6 +20,6 @@ class AuthAdmimin
                 return $next($request);
             }
 
-            return redirect('/login')->with('error', 'You do not have administrative access.');
+            return redirect('/')->with('error', 'You do not have administrative access.');
         }
 }

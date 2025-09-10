@@ -16,14 +16,24 @@ use App\Models\User;
 class AuthenticationController extends Controller
 {
     
+/**
+ * Login page.
+ */
     public function login(): View{
         return view('pages.login');
     }
 
-     public function register(): View{
+/**
+ * register Page
+ */
+
+     public function registerPage(): View{
         return view('pages.register');    
     }
 
+/**
+ * Log the user into the application.
+ */
         public function authenticate(Request $request): RedirectResponse{
            
         $credentials = $request->validate([
@@ -43,7 +53,11 @@ class AuthenticationController extends Controller
     }
 
 
-    public function registerUser(Request $request){
+/**
+ * Register a user out in the application.
+ */
+
+    public function register(Request $request){
         
           $credentials = $request->validate([
             'name' => 'required|string|max:255',
@@ -62,5 +76,22 @@ class AuthenticationController extends Controller
         return redirect('/dashboard');
 
     }
+
+
+    
+
+/**
+ * Log the user out of the application.
+ */
+public function logout(Request $request): RedirectResponse
+{
+    Auth::logout();
+
+    $request->session()->invalidate();
+
+    $request->session()->regenerateToken();
+
+    return redirect('/');
+}
 }
 
