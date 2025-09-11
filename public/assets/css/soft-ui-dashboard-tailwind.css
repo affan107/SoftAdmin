@@ -2593,6 +2593,17 @@ h6 {
   color: rgb(37 47 64 / var(--tw-text-opacity));
 }
 
+.text-bg-500 {
+  --tw-bg-opacity: 1;
+  color: rgb(245 57 57 / var(--tw-bg-opacity));
+}
+
+.text-bg-600 {
+  --tw-bg-opacity: 1;
+  color: rgb(234 6 6 / var(--tw-bg-opacity));
+}
+
+
 .text-red-500 {
   --tw-text-opacity: 1;
   color: rgb(245 57 57 / var(--tw-text-opacity));

@@ -20,7 +20,7 @@ class AuthenticationController extends Controller
  * Login page.
  */
     public function login(): View{
-        return view('pages.login');
+        return view('auth.login');
     }
 
 /**
@@ -28,7 +28,7 @@ class AuthenticationController extends Controller
  */
 
      public function registerPage(): View{
-        return view('pages.register');    
+        return view('auth.register');    
     }
 
 /**

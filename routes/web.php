@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CompaniesController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -21,9 +22,8 @@ Route::post('/logout', [AuthenticationController::class, 'logout'])->name('logou
 Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard')->middleware('auth');
 
 
-Route::get('/companies', function () {
-    return view('pages.companies');
-})->middleware('auth');
+
+Route::resource('/companies', CompaniesController::class);
 
 // Route::get('/reset-password', function () {
 //     return view('pages.forgotPassword');

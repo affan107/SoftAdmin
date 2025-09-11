@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Companies;
+use App\Models\Company;
 use Illuminate\Http\Request;
 
 class CompaniesController extends Controller
@@ -13,6 +13,7 @@ class CompaniesController extends Controller
     public function index()
     {
         //
+        return view('companies.index');
     }
 
     /**
@@ -21,6 +22,7 @@ class CompaniesController extends Controller
     public function create()
     {
         //
+        return view('companies.create');
     }
 
     /**
