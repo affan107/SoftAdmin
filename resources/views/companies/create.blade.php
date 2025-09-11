@@ -1,10 +1,10 @@
 @extends('layout.app')
 @section('content')
-    <form class="p-6 rounded-lg shadow-md" method="POST" action="{{ route('companies.index') }}">
+    <form class="p-6 rounded-lg shadow-md" method="POST" action="{{ route('companies.store') }}" enctype="multipart/form-data" >
         @csrf
 
         {{-- logo and cover image  --}}
-        <div class="mb-4 flex items-center content-center w-full gap-x-3">
+        <div class= "mb-4 flex items-center content-center w-full gap-x-3" >
             <div class="w-full">
 
                 <label for="logo" class="block text-sm font-medium text-gray-700 mb-1">Logo</label>
@@ -179,8 +179,27 @@
                     class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow" />
             </div>
         </div>
-        {{-- status and verification --}}
+        {{-- industry and status --}}
         <div class="mb-4 flex items-center content-center w-full gap-x-3">
+           <div class="w-full">
+                <label for="status" class="block text-sm font-medium text-gray-700 mb-1">Industry</label>
+                <select name="Industry"
+                    class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow">
+                    <option value="">
+                        select the industry
+                    </option>
+                    <option value="IT">
+                        IT 
+                    </option>
+                    <option value="Textile">
+                        Textile
+                    </option>
+                    <option value="Sugar">
+                        Sugar
+                    </option>
+
+                </select>
+            </div>
             <div class="w-full">
                 <label for="status" class="block text-sm font-medium text-gray-700 mb-1">Status</label>
                 <select name="status"
@@ -201,6 +220,7 @@
                 </select>
             </div>
         </div>
+        {{-- verification --}}
         <div>
             <label for="is_verified" class="block text-sm font-medium text-gray-700 mb-1">Verified</label>
             <input type="checkbox" id="is_verified" name="is_verified" />

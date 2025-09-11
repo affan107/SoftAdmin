@@ -30,7 +30,36 @@ class CompaniesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validatedData = $request->validate([
+            'name'  => 'required|string|max:255',
+            'email'   => 'required|string',
+            'password'   => 'required|string',
+            'logo' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+            'cover_image'  => 'required|image|mimes:jpg,jpeg,png|max:2048',
+            'industry'  => 'required|string',
+            'country'  => 'required|string',
+            'state'  => 'required|string',
+            'city'  => 'required|string',
+            'primary_address' => 'required| string',
+            'secondary' => 'required| string',
+            'facebook'   => 'required|string',
+            'instagram'   => 'required|string',
+            'whatsapp'   => 'required|string',
+            'linkedin'   => 'required|string',
+            'website'   => 'required|string',
+            'description'   => 'required|longtext',
+            'no_of_employees'   => 'required|string',
+            'status'   => 'required|string',
+            'telephone_primary'   => 'required|string',
+            'telephone_secondary'   => 'required|string',
+            'is_verified' => 'nullable',
+        ]);
+
+
+        Company::create($validatedData);
+
+        return redirect()->route('companies.index')->with('success', 'Comapany created successfully!');
     }
 
     /**
