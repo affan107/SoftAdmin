@@ -194,7 +194,7 @@
                                     <div class="min-h-6 pl-6.92 mb-0.5 block">
                                         <input id="terms"
                                             class="w-4.92 h-4.92 ease-soft -ml-6.92 rounded-1.4 checked:bg-gradient-to-tl checked:from-gray-900 checked:to-slate-800 after:text-xxs after:font-awesome after:duration-250 after:ease-soft-in-out duration-250 relative float-left mt-1 cursor-pointer appearance-none border border-solid border-slate-200 bg-white bg-contain bg-center bg-no-repeat align-top transition-all after:absolute after:flex after:h-full after:w-full after:items-center after:justify-center after:text-white after:opacity-0 after:transition-all after:content-['\f00c'] checked:border-0 checked:border-transparent checked:bg-transparent checked:after:opacity-100"
-                                            type="checkbox" value="" checked />
+                                            type="checkbox" value=""  />
                                         <label
                                             class="mb-2 ml-1 font-normal cursor-pointer select-none text-sm text-slate-700"
                                             for="terms"> I agree the <a href="javascript:;"

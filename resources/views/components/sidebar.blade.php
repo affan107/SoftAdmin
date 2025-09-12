@@ -16,7 +16,7 @@
     <div class="items-center block w-auto max-h-screen h-sidenav grow basis-full">
         <ul class="flex flex-col pl-0 mb-0">
             <li class="mt-0.5 w-full">
-                <a class="ease-nav-brand flex font-semibold items-center mx-4 my-0 px-4 py-2.7 rounded-lg text-slate-700 text-sm transition-colors whitespace-nowrap {{Route::currentRouteNamed('dashboard') ? 'bg-white shadow-soft-xl' : ''}} "
+                <a class="ease-nav-brand flex font-semibold items-center mx-4 my-0 px-4 py-2.7 rounded-lg text-slate-700 text-sm transition-colors whitespace-nowrap {{Route::currentRouteNamed('dashboard') ? 'bg-white shadow-soft-lg' : ''}} "
                     href="{{ route('dashboard') }}">
                     <div
                         class="{{Route::currentRouteNamed('dashboard') ? 'bg-center bg-gradient-to-tl bg-white flex from-purple-700 h-8 items-center justify-center mr-2 rounded-lg shadow-soft-2xl stroke-0 text-center to-pink-500 w-8 xl:p-2.5': 'shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5'}} ">
@@ -45,7 +45,7 @@
 
 
            <li class="mt-0.5 w-full">
-            <a  href="{{ route('companies.index') }}" class="ease-nav-brand flex font-semibold items-center mx-4 my-0 px-4 py-2.7 rounded-lg text-slate-700 text-sm transition-colors whitespace-nowrap {{request()->is('companies*') ? 'bg-white shadow-soft-xl' : ''}} ">
+            <a  href="{{ route('companies.index') }}" class="ease-nav-brand flex font-semibold items-center mx-4 my-0 px-4 py-2.7 rounded-lg text-slate-700 text-sm transition-colors whitespace-nowrap {{request()->is('companies*') ? 'bg-white shadow-soft-lg' : ''}} ">
               <div  class="{{request()->is('companies*') ? 'bg-center bg-gradient-to-tl bg-white flex from-purple-700 h-8 items-center justify-center mr-2 rounded-lg shadow-soft-2xl stroke-0 text-center to-pink-500 w-8 xl:p-2.5': 'shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5'}} ">
                 <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                   <title>office</title>
