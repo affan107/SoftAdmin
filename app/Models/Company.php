@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Company extends Model
 {
@@ -31,4 +32,10 @@ class Company extends Model
         "status",
         'is_verified'
     ];
+
+
+    public function user(): HasOne
+    {
+        return $this->hasOne(User::class);
+    }
 }

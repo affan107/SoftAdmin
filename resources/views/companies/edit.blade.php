@@ -6,24 +6,28 @@
         @method('PUT')
         {{-- logo and cover image  --}}
         <div class= "mb-4 flex items-center content-center w-full gap-x-3">
-            <img src="{{ asset('storage/' . $company->logo) }}"
-                class="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-9 w-20 rounded-xl" />
 
             <div class="w-full">
-                <label for="logo" class="block text-sm font-medium text-gray-700 mb-1">Logo</label>
-                <input type="file" id="logo" name="logo"
-                    class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow" />
+                <label for="logo" class="block text-sm font-bold text-gray-700 mb-1">Logo</label>
+                <div class="flex">
+                    <img src="{{ asset('storage/' . $company->logo) }}"
+                        class="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-9 w-10 rounded-xl" />
+                    <input type="file" id="logo" name="logo"
+                        class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-auto appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow" />
+                </div> 
                 @error('logo')
                     <div class="text-red-700">{{ $message }}</div>
                 @enderror
             </div>
-            <img src="{{ asset('storage/' . $company->cover_image) }}"
-                class="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-9 w-30 rounded-xl" />
 
             <div class="w-full">
-                <label for="cover_image" class="block text-sm font-medium text-gray-700 mb-1">Cover Image</label>
-                <input type="file" id="image" name="cover_image" value="{{ $company->cover_image }}"
-                    class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow" />
+                <label for="cover_image" class="block text-sm font-bold text-gray-700 mb-1">Cover Image</label>
+                <div class="flex">
+                    <img src="{{ asset('storage/' . $company->cover_image) }}"
+                       class="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-9 w-10 rounded-xl" />
+                    <input type="file" id="image" name="cover_image" value="{{ $company->cover_image }}"
+                        class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-auto appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow" />
+                </div>
                 @error('cover_image')
                     <div class="text-red-700">{{ $message }}</div>
                 @enderror
@@ -32,7 +36,7 @@
         {{-- Name and email  --}}
         <div class="mb-4 flex items-center content-center w-full gap-x-3">
             <div class="w-full">
-                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                <label for="name" class="block text-sm font-bold text-gray-700 mb-1">Name</label>
                 <input type="text" name="name" placeholder="Enter your company's name" autocomplete="off"
                     value="{{ $company->name }}"
                     class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow" />
@@ -41,7 +45,7 @@
                 @enderror
             </div>
             <div class="w-full">
-                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                <label for="email" class="block text-sm font-bold text-gray-700 mb-1">Email</label>
                 <input type="email" placeholder="Enter your company's email" autocomplete="new-email"
                     value="{{ $company->email }}"
                     class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow"
@@ -55,7 +59,7 @@
         {{-- Region --}}
         <div class="mb-4 flex items-center content-center w-full gap-x-3">
             <div class="w-full">
-                <label for="country" class="block text-sm font-medium text-gray-700 mb-1">Country</label>
+                <label for="country" class="block text-sm font-bold text-gray-700 mb-1">Country</label>
                 <select name="country"
                     class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow">
                     <option value="{{ $company->country }}" class="text-gray-200 dark:text-gray-200">
@@ -80,7 +84,7 @@
                 @enderror
             </div>
             <div class="w-full">
-                <label for="state" class="block text-sm font-medium text-gray-700 mb-1">State</label>
+                <label for="state" class="block text-sm font-bold text-gray-700 mb-1">State</label>
                 <select name="state"
                     class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow">
                     <option value="{{ $company->state }}" class="text-gray-200 dark:text-gray-200">
@@ -104,7 +108,7 @@
                 @enderror
             </div>
             <div class="w-full">
-                <label for="city" class="block text-sm font-medium text-gray-700 mb-1">City</label>
+                <label for="city" class="block text-sm font-bold text-gray-700 mb-1">City</label>
                 <select name="city"
                     class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow">
                     <option value="{{ $company->city }}" class="text-gray-200 dark:text-gray-200">
@@ -131,7 +135,7 @@
         {{-- Address --}}
         <div class="mb-4 flex items-center content-center w-full gap-x-3">
             <div class="w-full">
-                <label for="primary_address" class="block text-sm font-medium text-gray-700 mb-1">Primary Address</label>
+                <label for="primary_address" class="block text-sm font-bold text-gray-700 mb-1">Primary Address</label>
                 <input type="text" id="primary_address" name="primary_address" placeholder="Enter your primary address"
                     value="{{ $company->primary_address }}"
                     class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow" />
@@ -139,7 +143,7 @@
                     <div class="text-red-700">{{ $message }}</div>
                 @enderror
             </div>
-            <div class="w-full"> <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Secondary
+            <div class="w-full"> <label for="email" class="block text-sm font-bold text-gray-700 mb-1">Secondary
                     Address</label>
                 <input type="text" id="secondary_address" name="secondary_address"
                     value="{{ $company->secondary_address }}" placeholder="Enter your secondary address"
@@ -152,7 +156,7 @@
         {{-- social --}}
         <div class="mb-4 flex items-center content-centerw-full gap-x-3">
             <div class="w-full">
-                <label for="whatsapp" class="block text-sm font-medium text-gray-700 mb-1">
+                <label for="whatsapp" class="block text-sm font-bold text-gray-700 mb-1">
                     WhatsApp <i class="fa-brands fa-whatsapp"></i>
                 </label>
                 <input type="text" id="whatsaqpp" name="whatsapp" placeholder="Enter your Whatsapp number"
@@ -160,7 +164,7 @@
                     class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow" />
             </div>
             <div class="w-full">
-                <label for="facebook" class="block text-sm font-medium text-gray-700 mb-1">Facebook <i
+                <label for="facebook" class="block text-sm font-bold text-gray-700 mb-1">Facebook <i
                         class="fa-brands fa-facebook"></i></label>
                 <input type="text" id="facebook" name="facebook" placeholder="Enter your facebook url"
                     value="{{ $company->facebook }}"
@@ -172,7 +176,7 @@
         </div>
         <div class="mb-4 flex items-center content-center w-full gap-x-3">
             <div class="w-full">
-                <label for="instagram" class="block text-sm font-medium text-gray-700 mb-1">Instagram <i
+                <label for="instagram" class="block text-sm font-bold text-gray-700 mb-1">Instagram <i
                         class="fa-brands fa-instagram"></i></label>
                 <input type="instagram" id="instagram" name="instagram" placeholder="Enter your instgram url"
                     value="{{ $company->instagram }}"
@@ -182,7 +186,7 @@
                 @enderror
             </div>
             <div class="w-full">
-                <label for="linkedin" class="block text-sm font-medium text-gray-700 mb-1">LinkedIn <i
+                <label for="linkedin" class="block text-sm font-bold text-gray-700 mb-1">LinkedIn <i
                         class="fa-brands fa-linkedin"></i></label>
                 <input type="linkedin" id="linkedin" name="linkedin" placeholder="Enter your linkedin url"
                     value="{{ $company->linkedin }}"
@@ -194,7 +198,7 @@
         </div>
         <div class="mb-4 flex items-center content-center w-full gap-x-3">
             <div class="w-full">
-                <label for="website" class="block text-sm font-medium text-gray-700 mb-1">Website
+                <label for="website" class="block text-sm font-bold text-gray-700 mb-1">Website
                     Url</label>
                 <input type="website" id="website" name="website" placeholder="Enter your website url"
                     value="{{ $company->website }}"
@@ -204,7 +208,7 @@
                 @enderror
             </div>
             <div class="w-full">
-                <label for="no_of_employees" class="block text-sm font-medium text-gray-700 mb-1">No. of
+                <label for="no_of_employees" class="block text-sm font-bold text-gray-700 mb-1">No. of
                     Employees</label>
                 <select name="no_of_employees"
                     class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow">
@@ -232,7 +236,7 @@
         {{-- contact --}}
         <div class="mb-4 flex items-center content-center w-full gap-x-3">
             <div class="w-full">
-                <label for="telephone_primary" class="block text-sm font-medium text-gray-700 mb-1">Primary
+                <label for="telephone_primary" class="block text-sm font-bold text-gray-700 mb-1">Primary
                     Telephone</label>
                 <input type="tel" id="telephone_primary" name="telephone_primary"
                     placeholder="Enter your telephone number" value="{{ $company->telephone_primary }}"
@@ -242,7 +246,7 @@
                 @enderror
             </div>
             <div class="w-full"> <label for="telephone_secondary"
-                    class="block text-sm font-medium text-gray-700 mb-1">Secondary Telephone (Optional)</label>
+                    class="block text-sm font-bold text-gray-700 mb-1">Secondary Telephone (Optional)</label>
                 <input type="tel" id="telephone_secondary" name="telephone_secondary"
                     value="{{ $company->telephone_secondary }}"
                     placeholder="Enter your secondaery telephone number (optional)"
@@ -255,7 +259,7 @@
         {{-- industry and status --}}
         <div class="mb-4 flex items-center content-center w-full gap-x-3">
             <div class="w-full">
-                <label for="status" class="block text-sm font-medium text-gray-700 mb-1">Industry</label>
+                <label for="status" class="block text-sm font-bold text-gray-700 mb-1">Industry</label>
                 <select name="industry"
                     class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow">
                     <option value="{{ $company->industry }}">
@@ -276,7 +280,7 @@
                 @enderror
             </div>
             <div class="w-full">
-                <label for="status" class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+                <label for="status" class="block text-sm font-bold text-gray-700 mb-1">Status</label>
                 <select name="status"
                     class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow">
                     <option vvalue="{{ $company->status }}">
@@ -302,7 +306,7 @@
         </div>
         {{-- Description --}}
         <div class="w-full"> <label for="description"
-                class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                class="block text-sm font-bold text-gray-700 mb-1">Description</label>
         </div>
         <div class="mb-4 flex items-center content-center w-full gap-x-3">
             <div class="w-full">
@@ -327,10 +331,10 @@
             </div>
             <div>
                 <div class="flex">
-                    <label for="is_verified" class="block text-sm font-medium text-gray-700 mb-1">Verified</label>
+                    <label for="is_verified" class="block text-sm font-bold text-gray-700 mb-1">Verified</label>
                     <small class="mx-2 mt-1 text-xs">(If you check this box the company will be auto verified.)</small>
                 </div>
-                <input type="checkbox" id="is_verified" name="is_verified" value="{{ $company->is_verified }}" />
+                <input type="checkbox" id="is_verified" name="is_verified" value="1" {{ old('is_verified', $company->is_verified) ? 'checked' : '' }} />
                 @error('is_verified')
                     <div class="text-red-700">{{ $message }}</div>
                 @enderror

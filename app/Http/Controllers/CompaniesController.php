@@ -40,7 +40,8 @@ class CompaniesController extends Controller
         $validatedData = $request->validate([
             'name'  => 'required|string|max:255',
             'email'   => 'required|string',
-            'password'   => 'required|string',
+            'password'   => 'required|min:8|max:16|confirmed:confirm_password',
+            'confirm_password'   => 'required|min:8|max:16',
             'logo' => 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
             'cover_image'  => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'industry'  => 'required|string',
@@ -51,15 +52,18 @@ class CompaniesController extends Controller
             'secondary_address' => 'nullable| string',
             'facebook'   => 'nullable',
             'instagram'   => 'nullable|string',
-            'whatsapp'   => 'nullable|string',
-            'linkedin'   => 'nullable|string',
-            'website'   => 'nullable|string',
+            'whatsapp'   => 'required|string',
+            'linkedin'   => 'required|string',
+            'website'   => 'required|string',
             'description'   => 'nullable|string',
             'no_of_employees'   => 'required|string',
             'status'   => 'required|string',
             'telephone_primary'   => 'required|string',
             'telephone_secondary'   => 'nullable|string',
             'is_verified' => 'nullable',
+            'terms' => ['required', 'accepted'],
+    ], [
+        'terms.accepted' => 'You must accept the Terms and Conditions.',
         ]);
         $validatedData['is_verified'] = $request->has('is_verified');
         
@@ -75,7 +79,7 @@ class CompaniesController extends Controller
 
         $company =  Company::create($validatedData);
 
-        User::create(['name' => $company->name,'email' => $company->email,'password' => $company->password,'company_id' => $company->id]);
+       $user = User::create(['name' => $company->name,'email' => $company->email,'password' => $company->password,'company_id' => $company->id]);
 
         return redirect()->route('companies.index')->with('success', 'Comapany created successfully!');
     }

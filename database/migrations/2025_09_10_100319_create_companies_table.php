@@ -26,11 +26,11 @@ return new class extends Migration
             $table->string('secondary_address')->nullable();
             $table->string('telephone_primary');
             $table->string('telephone_secondary')->nullable();
-            $table->string('website')->nullable();
+            $table->string('website');
             $table->string('instagram')->nullable();
             $table->string('facebook')->nullable();
-            $table->string('whatsapp')->nullable();
-            $table->string('linkedin')->nullable();
+            $table->string('whatsapp');
+            $table->string('linkedin');
             $table->longtext('description')->nullable();
             $table->string('no_of_employees');
             $table->string('status');

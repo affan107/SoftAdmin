@@ -22,20 +22,19 @@
                     class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
                     Strength</th>
                 <th
-                    class="px-6 py-3 font-semibold capitalize align-middle bg-transparent border-b border-gray-200 border-solid shadow-none tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                    Actions
-                </th>
+                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                    Actions</th>
 
             </tr>
         </thead>
         <tbody>
-            @foreach ($companies as $company)
+            @forelse ($companies as $company)
                 <tr>
                     <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                         <div class="flex px-2 py-1">
                             <div>
                                 <img src="{{ asset('storage/' . $company->logo) }}"
-                                    class="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-9 w-15 rounded-xl" />
+                                    class="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-9 w-9 rounded-xl" />
                             </div>
                             <div class="flex flex-col justify-center">
                                 <h6 class="mb-0 text-sm leading-normal">{{ $company->name }}</h6>
@@ -78,7 +77,31 @@
                         </div>
                     </td>
                 </tr>
-            @endforeach
+            @empty
+                <tr>
+                    <td class="pl-6 justify-items-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                      N/A
+                    </td>
+                    <td class="p-2 justify-items-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                        N/A
+                    </td>
+                    <td class="p-2 justify-items-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                       <div class="justify-items-center">
+                        N/A
+                    </div> 
+                    </td>
+                    <td class="p-2 justify-items-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                       <div class="justify-items-center">
+                        N/A
+                    </div> 
+                    </td>
+                    <td class="p-2 justify-items-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                       <div class="justify-items-center">
+                        N/A
+                    </div> 
+                    </td>
+                </tr>
+            @endforelse
         </tbody>
     </table>
     <br> <br>

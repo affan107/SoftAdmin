@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->unsignedBigInteger('company_id')->nullable();    
+            $table->foreignId('company_id')->constrained()->onDelete('cascade'); // Foreign key to companies table
             $table->rememberToken();
             $table->timestamps();
         });

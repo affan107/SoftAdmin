@@ -70,6 +70,9 @@ class AuthenticationController extends Controller
             'email' => $credentials['email'],
             'password' => Hash::make($credentials['password']),
         ]);
+
+
+        $user->assignRole('Admin');
         
         Auth::login($user);
 
