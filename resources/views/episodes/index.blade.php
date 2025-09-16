@@ -17,16 +17,15 @@
                     Episode No.</th>
                 <th
                     class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                    YT-link</th>
+                    Status</th>
                 <th
                     class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
                     Type</th>
                 <th
                     class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                    status</th>
-                <th
-                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                    duration</th>
+                    duration 
+                    <span> in minutes </span>
+                </th>
                 <th
                     class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
                     quotes
@@ -40,44 +39,46 @@
         </thead>
         <tbody>
             @forelse ($episodes as $episode)
-                <tr>
+                
+                {{-- @dd($episode) --}}
+            <tr>
                     <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                         <div class="flex px-2 py-1">
-
+                            <div>
+                                <img src="{{ asset('storage/' . $episode->episodeImages[0]->image) }}"
+                                    class="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-9 w-9 rounded-xl" />
+                            </div>
                             <div class="flex flex-col justify-center">
                                 <h6 class="mb-0 text-sm leading-normal">{{ $episode->title }}</h6>
                             </div>
                         </div>
                     </td>
                     <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                        <p class="mb-0 text-xs leading-tight text-slate-400">{{ $company->episode_no }}</p>
+                        <p class="mb-0 text-xs leading-tight text-slate-400">{{ $episode->episode_no }}</p>
                     </td>
                     <td
                         class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                         <span
-                            class="bg-gradient-to-tl from-slate-600 to-slate-300 px-2.5 text-xs rounded-1.8 py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">{{ $episode->yt_link }}</span>
+                            class="bg-gradient-to-tl from-slate-600 to-slate-300 px-2.5 text-xs rounded-1.8 py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">{{ $episode->status }}</span>
                     </td>
                     <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                        <span
-                            class="text-xs font-semibold leading-tight text-slate-400">{{ $episode->type }}</span>
+                        <span class="text-xs font-semibold leading-tight text-slate-400">{{ $episode->type }}</span>
                     </td>
-                     <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                    {{-- <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                         <span
                             class="text-xs font-semibold leading-tight text-slate-400">{{ $episode->status }}</span>
+                    </td> --}}
+                    <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                        <span class="text-xs font-semibold leading-tight text-slate-400">{{ $episode->duration }}</span>
                     </td>
-                     <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                        <span
-                            class="text-xs font-semibold leading-tight text-slate-400">{{ $episode->duration }}</span>
-                    </td>
-                     <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                        <span
-                            class="text-xs font-semibold leading-tight text-slate-400">{{ $episode->quote }}</span>
+                    <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                        <span class="text-xs font-semibold leading-tight text-slate-400">{{ $episode->quotes }}</span>
                     </td>
                     <td
                         class="p-2 justify-items-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                         <div class="flex items-center px-2 py-1  gap-3">
                             <div>
-                                <a href="{{ route('epiosodes.show', $episode->id) }}">
+                                <a href="{{ route('episodes.show', $episode->id) }}">
                                     <i class="fa-solid fa-eye"></i>
                                 </a>
                             </div>
@@ -135,13 +136,8 @@
                             N/A
                         </div>
                     </td>
-                     <td
-                        class="p-2 justify-items-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                        <div class="justify-items-center">
-                            N/A
-                        </div>
-                    </td>
-                  
+
+
                 </tr>
             @endforelse
         </tbody>

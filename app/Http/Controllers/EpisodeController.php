@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Episode;
+use App\Models\Company;
+use App\Models\EpisodeImage;
 use Illuminate\Http\Request;
+use App\Http\Controllers\CompaniesController;
+use Illuminate\Support\Facades\Storage;
+
 
 class EpisodeController extends Controller
 {
@@ -12,8 +17,8 @@ class EpisodeController extends Controller
      */
     public function index()
     {
-        //
-        $episodes = Episode::latest()->get();
+        
+        $episodes = Episode::with('episodeImages')->latest()->get();
         return view('episodes.index', compact('episodes'));
     }
 
@@ -22,8 +27,8 @@ class EpisodeController extends Controller
      */
     public function create()
     {
-        //
-        return view('episodes.create');
+        $companies = Company::all();
+        return view('episodes.create',compact('companies'));
     }
 
     /**
@@ -31,8 +36,8 @@ class EpisodeController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
         $validatedData = $request->validate([
+            
             'title'  => 'required|string|max:255',
             'episode_no'   => 'required|string',
             'yt_link'   => 'required|string',
@@ -41,12 +46,31 @@ class EpisodeController extends Controller
             'duration'  => 'required|string',
             'quotes'  => 'required|string',
             'description' => 'required|string',
-            
+            'images' => 'required|array',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+            'company_id' => 'required|exists:companies,id'
+        ]);
+
+
+        $episode =  Episode::create([
+            'title'  => $request->title,
+            'episode_no'   => $request->episode_no,
+            'yt_link'   => $request->yt_link,
+            'type'   => $request->type,
+            'status'  => $request->status,
+            'duration'  => $request->duration,
+            'quotes'  => $request->quotes,
+            'description' => $request->description,
+            'company_id' => $request->company_id,
         ]);
        
-        $episode =  Episode::create($validatedData);
+         if ($request->hasFile('images')) {
+             foreach ($request->file('images') as $image) {
+                $path = $image->store('public/images'); 
+                EpisodeImage::create(['image' => $path,'episode_id' => $episode->id]);
+            } 
+        }
 
-      
         return redirect()->route('episodes.index')->with('success', 'Episode recorded Succesfully!');
     }
 
@@ -74,13 +98,26 @@ class EpisodeController extends Controller
      */
     public function update(Request $request, Episode $episode)
     {
-        //
+        $validatedData = $request->validate([
+            'title'  => 'required|string|max:255',
+            'episode_no'   => 'required|string',
+            'yt_link'   => 'required|string',
+            'type'   => 'required|string',
+            'status'  => 'required|string',
+            'duration'  => 'required|string',
+            'quotes'  => 'required|string',
+            'description' => 'required|string',
+        ]);
+ 
+        $episode->update($validatedData);
+
+        return redirect()->route('episodes.index')->with('success', 'Episode updated Succesfully!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Episode $episode)
+    public function destroy($id)
     {
        $episode = Episode::findOrFail($id); // Find the post, or throw 404 if not found
         $episode->delete(); // Delete the record

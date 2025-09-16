@@ -3,21 +3,17 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 
 class Episode extends Model
 {
-      protected $fillable = [
-        "title",
-        'images',
-        "episode_no",
-        "yt_link",
-        "type",
-        "description",
-        "quotes",
-        "duration",
-        "status",
-        
-    ];
+      protected $guarded = [];
+
+      public function episodeImages(): HasMany
+    {
+        return $this->hasMany(EpisodeImage::class);
+    }
 
 
     

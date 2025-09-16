@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('quotes');
             $table->string('duration');
             $table->string('status');
-            
+            $table->foreignId('company_id')->constrained()->onDelete('cascade'); // Foreign key to companies table
             $table->timestamps();
         });
     }

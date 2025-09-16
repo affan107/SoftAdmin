@@ -46,7 +46,7 @@
                 </a>
             </li>
 
-            @role('Admin')
+            {{-- @role('Admin') --}}
                 <li class="mt-0.5 w-full">
                     <a href="{{ route('companies.index') }}"
                         class="ease-nav-brand flex font-semibold items-center mx-4 my-0 px-4 py-2.7 rounded-lg text-slate-700 text-sm transition-colors whitespace-nowrap {{ request()->is('companies*') ? 'bg-white shadow-soft-lg' : '' }} ">
@@ -76,7 +76,7 @@
                         <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Companies</span>
                     </a>
                 </li>
-            @endrole
+            {{-- @endrole --}}
 
             <li class="mt-0.5 w-full">
                 <a href="{{ route('episodes.index') }}"
